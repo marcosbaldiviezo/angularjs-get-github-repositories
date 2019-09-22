@@ -7,7 +7,10 @@
     <script src="angular.min.js"></script>
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
     <script src="autocomplete-jquery-ui.js"></script>
-    <script src="controller.js"></script>
+    <script src="angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
+    <script src="directives.js"></script>
     <style>
     .circular {
         border-radius: 50%;
@@ -26,23 +29,7 @@
     }
     </style>
 </head>
-<body ng-controller="AppCtrl">
-    
-
-<div class="ui-widget">
-        <label for="tags">Repositorio github: </label>
-        <input type="text" my-autocomplete="repos" placeholder="Buscar repositorio">
-      </div>
-
-    <ul class="no-list">
-        <li ng-repeat="repo in posts" ng-hide="main_repo && main_repo != repo.name">
-            <div class="circular" back-img="{{repo.owner.avatar_url}}"></div>
-            <h1 class="inline-block"> {{repo.full_name}}</h1>
-        </li>
-    </ul>
-    <a ng-click="main_repo = null">LImpiar</a>
-
-
-
+<body>
+    <div ng-view></div>
 </body>
 </html>

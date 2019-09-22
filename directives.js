@@ -1,7 +1,6 @@
-angular.module('CustomDirective', [])
+angular.module('CustomDirective')
 .directive("myAutocomplete", function() {
     function link(scope, element, attrs) {
-        console.log(attrs.myAutocomplete);
         $(element).autocomplete({
             source: scope.$eval(attrs.myAutocomplete),
             select: function(ev, ui) {
@@ -30,32 +29,4 @@ angular.module('CustomDirective', [])
             });
         });
     };
-})
-.controller('AppCtrl', function($scope, $http) {
-    $scope.repos = [];
-
-    $http.get('https://api.github.com/users/marcosbaldiviezo/repos')
-    .then(function(response) {
-        $scope.posts = response.data;
-        for (var i = response.data.length -1; i >= 0; i--) {
-            var repo = response.data[i];
-            $scope.repos.push(repo.name);
-        }
-    }
-    ,function(err) {
-
-    });
-
-    $scope.optionSelected = function (data) {
-        $scope.$apply(function() {
-            $scope.main_repo = data;
-        })
-    }
-
-
-    
-
-
-
-
 });
